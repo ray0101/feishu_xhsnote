@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>小红书笔记提取</title>
+  <title data-i18n="title">小红书笔记提取</title>
   <style>
     * {
       margin: 0;
@@ -356,16 +356,17 @@
       100% { transform: rotate(45deg) scale(1); }
     }
   </style>
-  <script type="module" crossorigin src="./assets/index.99ea5a53.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/vendor-lark.d494abf6.js">
-  <link rel="modulepreload" crossorigin href="./assets/vendor-jquery.85696251.js">
+  <script type="module" crossorigin src="./assets/index.7376c746.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/vendor-lark.6ef72961.js">
+  <link rel="modulepreload" crossorigin href="./assets/vendor-jquery.88f4ff12.js">
+  <link rel="modulepreload" crossorigin href="./assets/vendor-i18n.7cd67a60.js">
 </head>
 
 <body>
   <div class="container">
     <div class="header">
-      <h1 class="title">小红书笔记提取</h1>
-      <p class="subtitle">批量采集小红书笔记数据并处理图片附件</p>
+      <h1 class="title" data-i18n="title">小红书笔记提取</h1>
+      <p class="subtitle" data-i18n="subtitle">批量采集小红书笔记数据并处理图片附件</p>
     </div>
 
     <!-- 用户信息固定在页面顶部 -->
@@ -403,9 +404,9 @@
 
     <form id="mainForm">
       <div class="form-group">
-        <label for="tableSelect">选择数据表</label>
+        <label for="tableSelect" data-i18n="form.selectTable">选择数据表</label>
         <select id="tableSelect">
-          <option value="">请选择数据表</option>
+          <option value="" data-i18n="form.selectTablePlaceholder">请选择数据表</option>
         </select>
       </div>
 
@@ -433,12 +434,27 @@
             <label class="checkbox-label">
             <input type="checkbox" name="fields" value="authorNickname" checked>
             <span class="checkmark"></span>
-            <span>作者昵称</span>
+            <span>博主昵称</span>
           </label>
           <label class="checkbox-label">
-            <input type="checkbox" name="fields" value="authorXhsId">
+            <input type="checkbox" name="fields" value="authorRedId" checked>
             <span class="checkmark"></span>
-            <span>作者小红书号</span>
+            <span>博主小红书号</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="fields" value="authorXhsUrl" checked>
+            <span class="checkmark"></span>
+            <span>博主主页链接</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="fields" value="authorFansCount" checked>
+            <span class="checkmark"></span>
+            <span>博主粉丝数</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="fields" value="authorDesc" checked>
+            <span class="checkmark"></span>
+            <span>博主简介</span>
           </label>
           <label class="checkbox-label">
             <input type="checkbox" name="fields" value="title" checked>
@@ -509,6 +525,11 @@
             <input type="checkbox" name="fields" value="ipLocation">
             <span class="checkmark"></span>
             <span>发文地址</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="fields" value="dataFetchTime" checked>
+            <span class="checkmark"></span>
+            <span>数据获取时间</span>
           </label>
         </div>
       </div>
@@ -607,6 +628,16 @@
         <div style="width: 60px; height: 60px; border: 4px solid #f3f3f3; border-top: 4px solid #ff2442; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>
         <div style="color: #ff2442; font-size: 16px; font-weight: 500;">正在验证授权...</div>
       </div>
+    </div>
+
+    <!-- 语言切换按钮 -->
+    <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+      <button id="languageToggle" style="padding: 12px 20px; background: white; color: #ff2442; border: 2px solid #ff2442; border-radius: 25px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 15px rgba(255, 36, 66, 0.2); transition: all 0.3s ease; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+        </svg>
+        <span id="currentLanguage">中文</span>
+      </button>
     </div>
 
     <!-- 右下角悬浮按钮 -->
